@@ -1,8 +1,11 @@
-use warnings;
 use strict;
-
+use warnings;
 package Time::Piece::MSSQL;
+{
+  $Time::Piece::MSSQL::VERSION = '0.021';
+}
 use Time::Piece;
+# ABSTRACT: MSSQL-specific methods for Time::Piece
 
 # stolen from timepiece-mysql 
 sub import {
@@ -10,50 +13,6 @@ sub import {
   goto &Time::Piece::import
 }
 
-=head1 NAME
-
-Time::Piece::MSSQL - MSSQL-specific methods for Time::Piece
-
-=head1 VERSION
-
-version 0.020
-
- $Id: MSSQL.pm,v 1.2 2004/10/26 16:55:53 rjbs Exp $
-
-=cut
-
-our $VERSION = '0.020';
-
-=head1 SYNOPSIS
-
- use Time::Piece::MSSQL;
-
- my $time = localtime;
-
- print $time->mssql_datetime;
- print $time->mssql_smalldatetime;
-
- my $time = Time::Piece->from_mssql_datetime( $mssql_datetime );
- my $time = Time::Piece->from_mssql_smalldatetime( $mssql_smalldatetime );
-
-=head1 DESCRIPTION
-
-This module adds functionality to L<Time::Piece>, providing methods useful for
-using the object in conjunction with a Microsoft SQL database connection.  It
-will produce and parse MSSQL's default-format datetime values.
-
-=head1 METHODS
-
-=cut
-
-=head2 C<< Time::Piece->mssql_datetime >>
-
-=head2 C<< Time::Piece->mssql_smalldatetime >>
-
-These methods return the Time::Piece object, formatted in the default notation
-for the correct MSSQL datatype.
-
-=cut
 
 sub mssql_datetime {
 	my $self = shift;
@@ -65,15 +24,6 @@ sub mssql_smalldatetime {
 	$self->strftime('%Y-%m-%d %H:%M:%S');
 }
 
-=head2 C<< Time::Piece->from_mssql_datetime($timestring) >>
-
-=head2 C<< Time::Piece->from_mssql_smalldatetime($timestring) >>
-
-These methods construct new Time::Piece objects from the given strings, which
-must be in the default MSSQL format for the correct datatype.  If the string is
-empty, undefined, or unparseable, C<undef> is returned.
-
-=cut
 
 sub from_mssql_datetime {
 	my ($class, $timestring) = @_;
@@ -97,6 +47,62 @@ BEGIN {
   }
 }
 
+
+1;
+
+__END__
+
+=pod
+
+=encoding UTF-8
+
+=head1 NAME
+
+Time::Piece::MSSQL - MSSQL-specific methods for Time::Piece
+
+=head1 VERSION
+
+version 0.021
+
+=head1 SYNOPSIS
+
+ use Time::Piece::MSSQL;
+
+ my $time = localtime;
+
+ print $time->mssql_datetime;
+ print $time->mssql_smalldatetime;
+
+ my $time = Time::Piece->from_mssql_datetime( $mssql_datetime );
+ my $time = Time::Piece->from_mssql_smalldatetime( $mssql_smalldatetime );
+
+=head1 DESCRIPTION
+
+This module adds functionality to L<Time::Piece>, providing methods useful for
+using the object in conjunction with a Microsoft SQL database connection.  It
+will produce and parse MSSQL's default-format datetime values.
+
+=head1 METHODS
+
+=head2 mssql_datetime
+
+=head2 mssql_smalldatetime
+
+These methods return the Time::Piece object, formatted in the default notation
+for the correct MSSQL datatype.
+
+=head2 from_mssql_datetime
+
+  my $time = Time::Piece->from_mssql_datetime($timestring);
+
+=head2 from_mssql_smalldatetime
+
+  my $time = Time::Piece->from_mssql_smalldatetime($timestring);
+
+These methods construct new Time::Piece objects from the given strings, which
+must be in the default MSSQL format for the correct datatype.  If the string is
+empty, undefined, or unparseable, C<undef> is returned.
+
 =head1 FINAL THOUGHTS
 
 This module saves less time than L<Time::Piece::MySQL>, because there are fewer
@@ -105,22 +111,13 @@ of datatypes in Class::DBI::MSSQL.
 
 =head1 AUTHOR
 
-Ricardo Signes, C<< <rjbs@cpan.org> >>
+Ricardo SIGNES <rjbs@cpan.org>
 
-=head1 BUGS
+=head1 COPYRIGHT AND LICENSE
 
-Please report any bugs or feature requests to
-C<bug-time-piece-mssql@rt.cpan.org>, or through the web interface at
-L<http://rt.cpan.org>.  I will be notified, and then you'll automatically be
-notified of progress on your bug as I make changes.
+This software is copyright (c) 2005 by Ricardo SIGNES.
 
-=head1 COPYRIGHT
-
-Copyright 2004-2006 Ricardo SIGNES, All Rights Reserved.
-
-This program is free software; you can redistribute it and/or modify it
-under the same terms as Perl itself.
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
 =cut
-
-1;

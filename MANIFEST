@@ -1,11 +1,14 @@
 Changes
+LICENSE
 MANIFEST
+META.json
+META.yml
 Makefile.PL
 README
+dist.ini
 lib/Time/Piece/MSSQL.pm
-t/00.load.t
-t/pod-coverage.t
-t/pod.t
-t/perl-critic.t
-LICENSE
-META.yml                                 Module meta-data (added by MakeMaker)
+t/000-report-versions-tiny.t
+t/from_mssql.t
+t/to_mssql.t
+xt/release/changes_has_content.t
+xt/release/pod-syntax.t
