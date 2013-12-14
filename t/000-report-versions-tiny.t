@@ -50,7 +50,7 @@ sub pmver {
 
 eval { $v .= pmver('ExtUtils::MakeMaker','6.30') };
 eval { $v .= pmver('Test::More','0.96') };
-eval { $v .= pmver('Time::Piece','any version') };
+eval { $v .= pmver('Time::Piece','1.17') };
 eval { $v .= pmver('strict','any version') };
 eval { $v .= pmver('warnings','any version') };
 

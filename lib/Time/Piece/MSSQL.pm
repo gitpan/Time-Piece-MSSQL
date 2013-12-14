@@ -2,9 +2,9 @@ use strict;
 use warnings;
 package Time::Piece::MSSQL;
 {
-  $Time::Piece::MSSQL::VERSION = '0.021';
+  $Time::Piece::MSSQL::VERSION = '0.022';
 }
-use Time::Piece;
+use Time::Piece 1.17;
 # ABSTRACT: MSSQL-specific methods for Time::Piece
 
 # stolen from timepiece-mysql 
@@ -62,7 +62,7 @@ Time::Piece::MSSQL - MSSQL-specific methods for Time::Piece
 
 =head1 VERSION
 
-version 0.021
+version 0.022
 
 =head1 SYNOPSIS
 

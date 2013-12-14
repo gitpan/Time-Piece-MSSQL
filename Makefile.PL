@@ -20,14 +20,14 @@ my %WriteMakefileArgs = (
   "LICENSE" => "perl",
   "NAME" => "Time::Piece::MSSQL",
   "PREREQ_PM" => {
-    "Time::Piece" => 0,
+    "Time::Piece" => "1.17",
     "strict" => 0,
     "warnings" => 0
   },
   "TEST_REQUIRES" => {
     "Test::More" => "0.96"
   },
-  "VERSION" => "0.021",
+  "VERSION" => "0.022",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -36,7 +36,7 @@ my %WriteMakefileArgs = (
 
 my %FallbackPrereqs = (
   "Test::More" => "0.96",
-  "Time::Piece" => 0,
+  "Time::Piece" => "1.17",
   "strict" => 0,
   "warnings" => 0
 );
